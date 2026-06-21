@@ -3,8 +3,14 @@ import string
 
 length = int(input("Enter password length: "))
 
-chars = string.ascii_letters + string.digits + string.punctuation
+characters = string.ascii_letters
 
-password = "".join(random.choice(chars) for _ in range(length))
+if input("Include numbers? (y/n): ").lower() == 'y':
+    characters += string.digits
 
-print("Generated Password:", password)
+if input("Include symbols? (y/n): ").lower() == 'y':
+    characters += string.punctuation
+
+password = ''.join(random.choice(characters) for _ in range(length))
+
+print("\nGenerated Password:", password)
